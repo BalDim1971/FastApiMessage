@@ -1,7 +1,13 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 
+from routers import users, messages
+
 app = FastAPI()
+
+# Добавляем роутеры для пользователей и сообщений.
+app.include_router(users.router)
+app.include_router(messages.router)
 
 
 @app.get("/")
